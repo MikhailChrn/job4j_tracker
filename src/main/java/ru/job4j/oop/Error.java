@@ -15,9 +15,9 @@ public class Error {
     }
 
     public void printInfo() {
-        System.out.print(active + " ");
-        System.out.print(status + " ");
-        System.out.println(message);
+        System.out.println("active: " + active);
+        System.out.println("status: " + status);
+        System.out.println("message: " + message);
     }
 
     public static void main(String[] args) {
