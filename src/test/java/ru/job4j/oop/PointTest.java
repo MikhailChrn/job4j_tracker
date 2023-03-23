@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class PointTest {
     @Test
-    void distanceFromPoint0Сomma0ToPoint0Сomma2() {
+    void distanceFromPointZeroCommaZeroToPointZeroCommaTwo() {
         Point a = new Point(0, 0);
         Point b = new Point(0, 2);
         double result = a.distance(b);
@@ -14,7 +14,7 @@ class PointTest {
     }
 
     @Test
-    void distanceFromPointMinus5Сomma0ToPoint0Сomma0() {
+    void distanceFromPointMinusFiveCommaZeroToPointZeroCommaZero() {
         Point a = new Point(-5, 0);
         Point b = new Point(0, 0);
         double result = a.distance(b);
@@ -23,7 +23,7 @@ class PointTest {
     }
 
     @Test
-    void distanceFromPointMinus2СommaMinus2ToPoint2Сomma2() {
+    void distanceFromPointMinusTwoCommaMinusTwoToPointTwoCommaTwo() {
         Point a = new Point(-2, -2);
         Point b = new Point(2, 2);
         double result = a.distance(b);
