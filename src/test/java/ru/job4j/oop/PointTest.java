@@ -30,4 +30,13 @@ class PointTest {
         double expected = Math.sqrt(32);
         assertThat(result).isEqualTo(expected);
     }
+
+    @Test
+    void distanceFromPointMinus1CommaMinus1CommaMinus1ToPoint1Comma1Comma1() {
+        Point a = new Point(-1, -1, -1);
+        Point b = new Point(1, 1, 1);
+        double result = a.distance3d(b);
+        double expected = Math.sqrt(12);
+        assertThat(result).isEqualTo(expected);
+    }
 }
