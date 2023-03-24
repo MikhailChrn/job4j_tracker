@@ -26,6 +26,10 @@ public class Calculator {
 
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
-        System.out.println(calculator.sumAllOperation(5));
+        System.out.println("Демонстрация метода SUM: " + sum(5));
+        System.out.println("Демонстрация метода MULTIPLY : " + calculator.multiply(5));
+        System.out.println("Демонстрация метода MINUS: " + minus(5));
+        System.out.println("Демонстрация метода DEVIDE : " + calculator.divide(5));
+        System.out.println("Демонстрация метода sumAllOperation: " + calculator.sumAllOperation(5));
     }
 }
