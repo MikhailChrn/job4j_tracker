@@ -27,7 +27,6 @@ public class Tracker {
     }
 
     public Item[] findByName(String key) {
-        //получение списка по имени
         int sizeResult = 0;
         Item[] result = new Item[size];
         for (int index = 0; index < result.length; index++) {
