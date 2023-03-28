@@ -9,7 +9,6 @@ public class Book {
 
     public Book(String nameOfBook) {
         this.nameOfBook = nameOfBook;
-        numberOfPages = 0;
     }
 
     public Book(String nameOfBook, int numberOfPages) {
