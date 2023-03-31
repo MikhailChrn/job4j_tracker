@@ -3,8 +3,10 @@ package ru.job4j.io;
 import java.util.Scanner;
 
 public class Matches {
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        String newline = System.lineSeparator();
         System.out.println("Игра 11.");
         boolean turn = true;
         int count = 11;
@@ -14,15 +16,15 @@ public class Matches {
             int matches = Integer.parseInt(input.nextLine());
             if (matches < 1 || 3 < matches) {
                 System.out.println("Сообщение об ошибке.");
-                continue;
-            }
-            turn = !turn;
-            if (count >= matches) {
-                count -= matches;
-                System.out.printf("Осталось %d спичек.\n", count);
-            }
-            if (count == 0) {
-                break;
+            } else {
+                turn = !turn;
+                if (count >= matches) {
+                    count -= matches;
+                    System.out.printf("Осталось %d спичек." + newline, count);
+                }
+                if (count == 0) {
+                    break;
+                }
             }
         }
         if (!turn) {
