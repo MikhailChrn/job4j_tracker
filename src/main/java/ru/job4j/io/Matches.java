@@ -20,9 +20,6 @@ public class Matches {
                 turn = !turn;
                 count -= matches;
                 System.out.printf("Осталось %d спичек." + newline, count);
-                if (count == 0) {
-                    break;
-                }
             }
         }
         if (!turn) {
