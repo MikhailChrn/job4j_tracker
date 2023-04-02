@@ -2,7 +2,7 @@ package ru.job4j.cast;
 
 public class Plane implements Vehicle {
     private String name;
-    String str = System.lineSeparator();
+    private final String str = System.lineSeparator();
 
     public Plane(String name) {
         this.name = name;
