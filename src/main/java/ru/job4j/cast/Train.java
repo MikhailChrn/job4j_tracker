@@ -2,7 +2,7 @@ package ru.job4j.cast;
 
 public class Train implements Vehicle {
     private String name;
-    private final String str = System.lineSeparator();
+    private static final String STR = System.lineSeparator();
 
     public Train(String name) {
         this.name = name;
@@ -10,11 +10,11 @@ public class Train implements Vehicle {
 
     @Override
     public void move() {
-        System.out.printf("%s поезд выходит." + str, name);
+        System.out.printf("%s поезд выходит." + STR, name);
     }
 
     @Override
     public void stop() {
-        System.out.printf("%s поезд останавливается." + str, name);
+        System.out.printf("%s поезд останавливается." + STR, name);
     }
 }
