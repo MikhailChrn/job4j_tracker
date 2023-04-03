@@ -46,14 +46,10 @@ public class StartUITest {
     @Test
     public void whenDeletedItem() {
         Tracker tracker = new Tracker();
-        Item item1 = new Item("Сходить к Марии");
-        tracker.add(item1);
-        Item item2 = new Item("Сходить к Анастасии");
-        tracker.add(item2);
-        Item item3 = new Item("Сходить к Елене");
-        tracker.add(item3);
-        String[] answer = {"1"};
+        Item item = new Item("new item");
+        tracker.add(item);
+        String[] answer = {String.valueOf(item.getId())};
         StartUI.deleteItem(new StubInput(answer), tracker);
-        assertThat(tracker.findByName("Сходить к Марии").length).isEqualTo(0);
+        assertThat(tracker.findById(item.getId())).isNull();
     }
 }
