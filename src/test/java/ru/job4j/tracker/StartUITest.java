@@ -35,7 +35,7 @@ public class StartUITest {
         Item item = new Item("new item");
         tracker.add(item);
         String[] answers = {
-                String.valueOf(item.getId()), /* id сохраненной заявки в объект tracker. */
+                String.valueOf(item.getId()),
                 "edited item"
         };
         StartUI.editItem(new StubInput(answers), tracker);
@@ -45,16 +45,15 @@ public class StartUITest {
 
     @Test
     public void whenDeletedItem() {
-        String[] addItemsAnswers = new String[]
-                {"Сходить к Марии", "Сходить к Анастасии", "Сходить к Елене"};
-        Input input = new StubInput(addItemsAnswers);
         Tracker tracker = new Tracker();
-        for (String str : addItemsAnswers) {
-            StartUI.createItem(input, tracker);
-        }
-        String[] deleteItemAnswers = {"1"};
-        StartUI.deleteItem(new StubInput(deleteItemAnswers), tracker);
-        Item[] result = tracker.findByName("Сходить к Марии");
-        assertThat(result.length).isEqualTo(0);
+        Item item1 = new Item("Сходить к Марии");
+        tracker.add(item1);
+        Item item2 = new Item("Сходить к Анастасии");
+        tracker.add(item2);
+        Item item3 = new Item("Сходить к Елене");
+        tracker.add(item3);
+        String[] answer = {"1"};
+        StartUI.deleteItem(new StubInput(answer), tracker);
+        assertThat(tracker.findByName("Сходить к Марии").length).isEqualTo(0);
     }
 }
