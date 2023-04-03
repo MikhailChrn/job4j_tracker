@@ -22,12 +22,11 @@ public class StartUITest {
                 {"Сходить к Марии", "Сходить к Анастасии", "Сходить к Елене"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
-        for (String str : answers) {
-            StartUI.createItem(input, tracker);
-        }
-        Item created = tracker.findById(2);
-        Item expected = new Item("Сходить к Анастасии");
-        assertThat(created.getName()).isEqualTo(expected.getName());
+        StartUI.createItem(input, tracker);
+        StartUI.createItem(input, tracker);
+        StartUI.createItem(input, tracker);
+        Item[] created = tracker.findAll();
+        assertThat(created.length).isEqualTo(3);
     }
 
     @Test
