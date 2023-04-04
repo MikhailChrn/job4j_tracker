@@ -1,8 +1,6 @@
 package ru.job4j.tracker;
 
 public class StartUI {
-    UserAction[] actions;
-
     private void showMenu(UserAction[] actions) {
         System.out.println("Menu.");
         for (int index = 0; index < actions.length; index++) {
