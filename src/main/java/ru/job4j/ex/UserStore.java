@@ -18,14 +18,13 @@ public class UserStore {
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        boolean result = false;
-        if (user.isValid() && user.getUsername().length() > 3) {
-            result = true;
-        } else {
+
+        if (!user.isValid() || user.getUsername().length() <= 3) {
             throw new UserInvalidException(
-                    String.valueOf("User with login = " + user.getUsername() + " is invalid."));
+                    String.valueOf("User with login = "
+                            + user.getUsername() + " is invalid."));
         }
-        return result;
+        return true;
     }
 
     public static void main(String[] args) {
