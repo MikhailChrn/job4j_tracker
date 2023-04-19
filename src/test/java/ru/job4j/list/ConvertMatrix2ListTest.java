@@ -1,6 +1,5 @@
 package ru.job4j.list;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -10,7 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ConvertMatrix2ListTest {
 
-    @Disabled
     @Test
     public void when2on2ArrayThenList4() {
         ConvertMatrix2List list = new ConvertMatrix2List();
