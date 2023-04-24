@@ -13,7 +13,7 @@ public class PassportOfficeTest {
     }
 
     @Test
-    public void whenTestAddMethod2() {
+    public void whenTestAddMethodWhenUserWithKeyAlreadyInMap() {
         Citizen citizen1 = new Citizen("2f44a", "Petr Arsentev");
         Citizen citizen2 = new Citizen("2f44a", "Mikhail Cherneyev");
         PassportOffice office = new PassportOffice();
