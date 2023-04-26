@@ -17,31 +17,42 @@ public class AnalyzeByMap {
 
     public static List<Label> averageScoreByPupil(List<Pupil> pupils) {
         List<Label> pupilsList = new ArrayList<>();
-        double sumLocal = 0;
-        int countLocal = 0;
         for (Pupil pupil : pupils) {
+            double sumLocal = 0;
+            int countLocal = 0;
             for (Subject subject : pupil.subjects()) {
                 sumLocal += subject.score();
                 countLocal++;
             }
             pupilsList.add(new Label(pupil.name(), sumLocal / countLocal));
-            sumLocal = 0;
-            countLocal = 0;
         }
         return pupilsList;
     }
 
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
+        Map<String, Integer> subjectMap = new LinkedHashMap<>();
+        for (Pupil pupil : pupils) {
+            for (Subject subject : pupil.subjects()) {
+                if (!subjectMap.containsKey(subject.name())) {
+                    subjectMap.put(subject.name(), subject.score());
+                } else {
+                    subjectMap.put(subject.name(), subjectMap.get(subject.name()) + subject.score());
+                }
+            }
+        }
         List<Label> subjectList = new ArrayList<>();
+        
+/*        List<Label> subjectList = new ArrayList<>();
         Set<String> subjectSet = new HashSet<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
                 subjectSet.add(subject.name());
             }
         }
-        double sumLocal = 0;
-        int countLocal = 0;
+
         for (String subjectOuter : subjectSet) {
+            double sumLocal = 0;
+            int countLocal = 0;
             for (Pupil pupil : pupils) {
                 for (Subject subjectInner : pupil.subjects()) {
                     if (subjectInner.name().equals(subjectOuter)) {
@@ -51,10 +62,9 @@ public class AnalyzeByMap {
                 }
             }
             subjectList.add(new Label(subjectOuter, sumLocal / countLocal));
-            sumLocal = 0;
-            countLocal = 0;
         }
-        return subjectList;
+        return subjectList;*/
+        return null;
     }
 
     public static Label bestStudent(List<Pupil> pupils) {
@@ -67,14 +77,8 @@ public class AnalyzeByMap {
             pupilsList.add(new Label(pupil.name(), pupilScoreSum));
             pupilScoreSum = 0;
         }
-        double maxPupilsScore = pupilsList.get(0).score();
-        int indexOfBestPupil = 0;
-        for (int i = 1; i < pupilsList.size(); i++) {
-            if (pupilsList.get(i).score() > maxPupilsScore) {
-                indexOfBestPupil = i;
-            }
-        }
-        return pupilsList.get(indexOfBestPupil);
+        Collections.sort(pupilsList);
+        return pupilsList.get(pupilsList.size() - 1);
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
@@ -97,13 +101,7 @@ public class AnalyzeByMap {
             subjectsList.add(new Label(subjectOuter, sumLocal));
             sumLocal = 0;
         }
-        double maxSubjectScore = subjectsList.get(0).score();
-        int indexOfBestSubject = 0;
-        for (int i = 1; i < subjectsList.size(); i++) {
-            if (subjectsList.get(i).score() > maxSubjectScore) {
-                indexOfBestSubject = i;
-            }
-        }
-        return subjectsList.get(indexOfBestSubject);
+        Collections.sort(subjectsList);
+        return subjectsList.get(subjectsList.size() - 1);
     }
 }
