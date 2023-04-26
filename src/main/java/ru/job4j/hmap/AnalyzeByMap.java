@@ -41,67 +41,41 @@ public class AnalyzeByMap {
             }
         }
         List<Label> subjectList = new ArrayList<>();
-        
-/*        List<Label> subjectList = new ArrayList<>();
-        Set<String> subjectSet = new HashSet<>();
-        for (Pupil pupil : pupils) {
-            for (Subject subject : pupil.subjects()) {
-                subjectSet.add(subject.name());
-            }
+        for (Map.Entry<String, Integer> entry : subjectMap.entrySet()) {
+            subjectList.add(new Label(entry.getKey(), entry.getValue() / pupils.size()));
         }
-
-        for (String subjectOuter : subjectSet) {
-            double sumLocal = 0;
-            int countLocal = 0;
-            for (Pupil pupil : pupils) {
-                for (Subject subjectInner : pupil.subjects()) {
-                    if (subjectInner.name().equals(subjectOuter)) {
-                        sumLocal += subjectInner.score();
-                        countLocal++;
-                    }
-                }
-            }
-            subjectList.add(new Label(subjectOuter, sumLocal / countLocal));
-        }
-        return subjectList;*/
-        return null;
+        return subjectList;
     }
 
     public static Label bestStudent(List<Pupil> pupils) {
         List<Label> pupilsList = new ArrayList<>();
-        double pupilScoreSum = 0;
         for (Pupil pupil : pupils) {
+            double pupilScoreSum = 0;
             for (Subject subject : pupil.subjects()) {
                 pupilScoreSum += subject.score();
             }
             pupilsList.add(new Label(pupil.name(), pupilScoreSum));
-            pupilScoreSum = 0;
         }
         Collections.sort(pupilsList);
         return pupilsList.get(pupilsList.size() - 1);
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
-        List<Label> subjectsList = new ArrayList<>();
-        Set<String> subjectSet = new HashSet<>();
+        Map<String, Integer> subjectMap = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                subjectSet.add(subject.name());
-            }
-        }
-        double sumLocal = 0;
-        for (String subjectOuter : subjectSet) {
-            for (Pupil pupil : pupils) {
-                for (Subject subjectInner : pupil.subjects()) {
-                    if (subjectInner.name().equals(subjectOuter)) {
-                        sumLocal += subjectInner.score();
-                    }
+                if (!subjectMap.containsKey(subject.name())) {
+                    subjectMap.put(subject.name(), subject.score());
+                } else {
+                    subjectMap.put(subject.name(), subjectMap.get(subject.name()) + subject.score());
                 }
             }
-            subjectsList.add(new Label(subjectOuter, sumLocal));
-            sumLocal = 0;
         }
-        Collections.sort(subjectsList);
-        return subjectsList.get(subjectsList.size() - 1);
+        List<Label> subjectList = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : subjectMap.entrySet()) {
+            subjectList.add(new Label(entry.getKey(), entry.getValue()));
+        }
+        Collections.sort(subjectList);
+        return subjectList.get(subjectList.size() - 1);
     }
 }
