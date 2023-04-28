@@ -49,4 +49,15 @@ public class Item {
                 + ", created=" + created.format(FORMATTER)
                 + '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Item item = (Item) obj;
+        return this.name == item.name;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

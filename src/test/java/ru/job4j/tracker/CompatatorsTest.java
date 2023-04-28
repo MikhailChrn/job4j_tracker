@@ -26,10 +26,7 @@ public class CompatatorsTest {
                         new Item("жз"))
                 );
         Collections.sort(items, new ItemAscByName());
-        assertThat(items.get(0).getName()).isEqualTo(expected.get(0).getName());
-        assertThat(items.get(1).getName()).isEqualTo(expected.get(1).getName());
-        assertThat(items.get(2).getName()).isEqualTo(expected.get(2).getName());
-        assertThat(items.get(3).getName()).isEqualTo(expected.get(3).getName());
+        assertThat(items).isEqualTo(expected);
     }
 
     @Test
@@ -49,9 +46,6 @@ public class CompatatorsTest {
                         new Item("аб"))
                 );
         Collections.sort(items, new ItemDescByName());
-        assertThat(items.get(0).getName()).isEqualTo(expected.get(0).getName());
-        assertThat(items.get(1).getName()).isEqualTo(expected.get(1).getName());
-        assertThat(items.get(2).getName()).isEqualTo(expected.get(2).getName());
-        assertThat(items.get(3).getName()).isEqualTo(expected.get(3).getName());
+        assertThat(items).isEqualTo(expected);
     }
 }
