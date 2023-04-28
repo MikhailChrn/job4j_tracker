@@ -1,11 +1,5 @@
 package ru.job4j.collection;
 
-//1. Для модели ru.job4j.collection.Job создайте 4 компаратора:
-// - по возрастанию имени;
-// - по возрастанию приоритета;
-// - по убыванию имени;
-// - по убыванию приоритета.
-
 import java.util.Objects;
 
 public class Job implements Comparable<Job> {
