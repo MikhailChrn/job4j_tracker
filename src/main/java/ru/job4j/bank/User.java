@@ -2,7 +2,16 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Модель пользователя банка.
+ * @author peterarsentev
+ * @version 1.0
+ */
+
 public class User {
+    /**
+     * Поля: номер паспорта и ФИО
+     */
     private String passport;
     private String username;
 
@@ -27,6 +36,11 @@ public class User {
         this.username = username;
     }
 
+    /**
+     * Методы hashCode и equals переопределены для обеспечения сравнения списков
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
