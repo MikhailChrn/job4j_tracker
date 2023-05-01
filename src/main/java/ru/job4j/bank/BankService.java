@@ -6,17 +6,20 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *  Главный сервис банка.
- *  @author peterarsentev
+ *  Главный сервис учебного банка.
+ *  @author MikhailChrn
  *  @version 1.0
  */
 
 public class BankService {
+    /**
+     * В поле users хранится пользователи и список счетов пользователя с использованием библиотечного элемента HashMap
+     */
     private final Map<User, List<Account>> users = new HashMap<>();
 
     /**
      * Метод addUser добавляет новый счёт к пользователю
-     * @param user
+     * @param user который добавляется в BankService
      */
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<Account>());
@@ -24,8 +27,8 @@ public class BankService {
 
     /**
      * Метод deleteUser удаляет пользователя из системы
-     * @param passport
-     * @return
+     * @param passport параметр уникально идентифицирует удаляемого пользователя из BankService
+     * @return если возвращенный методом объект не null, значит пользователь успешно удалён
      */
     public boolean deleteUser(String passport) {
         return users.remove(new User(passport, "")) != null;
@@ -33,8 +36,8 @@ public class BankService {
 
     /**
      * Метод addAccount добавляет новый счёт к пользователю
-     * @param passport
-     * @param account
+     * @param passport параметр уникально идентифицирует пользователя, которому добавляется account
+     * @param account добавляемый account пользователю
      */
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
@@ -48,8 +51,8 @@ public class BankService {
 
     /**
      * Метод findByPassport ищет пользователя по номеру паспорта
-     * @param passport
-     * @return
+     * @param passport параметр, по которому производится поиск пользователя
+     * @return Если ничего не найдено - метод должен вернуть null
      */
     public User findByPassport(String passport) {
         User result = null;
@@ -64,9 +67,9 @@ public class BankService {
 
     /**
      * Метод findByRequisite ищет счёт пользователя по реквизитам
-     * @param passport
-     * @param requisite
-     * @return
+     * @param passport параметр уникально идентифицирует пользователя, у которого ищется счёт
+     * @param requisite реквизиты счёта, который требуется найти
+     * @return метод может вернуть null, если счёт не найден
      */
     public Account findByRequisite(String passport, String requisite) {
         Account result = null;
@@ -85,12 +88,12 @@ public class BankService {
 
     /**
      * Метод transferMoney перечисляет деньги с одного счёта на другой счёт
-     * @param srcPassport
-     * @param srcRequisite
-     * @param destPassport
-     * @param destRequisite
-     * @param amount
-     * @return
+     * @param srcPassport параметр уникально идентифицирует пользователя, со счёта которого списывается средства
+     * @param srcRequisite реквизиты счёта, с которого списываются средства
+     * @param destPassport параметр уникально идентифицирует пользователя, которому на счёт зачисляются средства
+     * @param destRequisite реквизиты счёта, на который зачисляются средства
+     * @param amount кол-во перечисляемых средств
+     * @return если счёт не найден или не хватает денег на счёте, с которого переводят, то метод должен вернуть false
      */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
@@ -106,8 +109,8 @@ public class BankService {
 
     /**
      * Метод getAccounts возвращает список счетов пользователя
-     * @param user
-     * @return
+     * @param user пользователь, счета которого требуется вернуть
+     * @return метод возвращает список счетов пользователя
      */
     public List<Account> getAccounts(User user) {
         return users.get(user);

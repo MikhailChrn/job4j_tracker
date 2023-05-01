@@ -3,14 +3,14 @@ package ru.job4j.bank;
 import java.util.Objects;
 
 /**
- * Модель пользователя банка.
- * @author peterarsentev
+ * Модель пользователя банка - класс User
+ * @author MikhailChrn
  * @version 1.0
  */
 
 public class User {
     /**
-     * Поля: номер паспорта и ФИО
+     * Поля класса: номер паспорта и имя пользователя
      */
     private String passport;
     private String username;
@@ -37,9 +37,7 @@ public class User {
     }
 
     /**
-     * Методы hashCode и equals переопределены для обеспечения сравнения списков
-     * @param o
-     * @return
+     * Методы hashCode и equals переопределены для обеспечения корректного сравнения списков
      */
     @Override
     public boolean equals(Object o) {

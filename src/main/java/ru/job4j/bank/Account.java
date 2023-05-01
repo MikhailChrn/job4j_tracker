@@ -3,14 +3,14 @@ package ru.job4j.bank;
 import java.util.Objects;
 
 /**
- * Модель банковского счёта
- * @author peterarsentev
+ * Модель банковского счёта - класс Account
+ * @author MikhailChrn
  * @version 1.0
  */
 
 public class Account {
     /**
-     * Поля: баланс и реквизиты
+     * Поля класса: баланс и реквизиты
      */
     private String requisite;
     private double balance;
@@ -37,9 +37,7 @@ public class Account {
     }
 
     /**
-     * Методы hashCode и equals переопределены для обеспечения сравнения списков
-     * @param o
-     * @return
+     * Методы hashCode и equals переопределены для обеспечения корректного сравнения списков
      */
     @Override
     public boolean equals(Object o) {
