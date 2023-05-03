@@ -7,14 +7,11 @@ public class DepDescComp implements Comparator<String> {
     public int compare(String left, String right) {
         String leftElement = left.split("/")[0];
         String rightElement = right.split("/")[0];
-        if ((!leftElement.equals(rightElement))) {
-            AscDescComp ascDescComp = new AscDescComp();
-            return ascDescComp.compare(rightElement, leftElement);
-        } else {
-            AscDescComp ascDescComp = new AscDescComp();
-            int begSubStr = leftElement.length();
-            return ascDescComp.compare(left.substring(begSubStr, left.length()),
-                                    right.substring(begSubStr, right.length()));
-        }
+        int result = rightElement.compareTo(leftElement);
+        return result != 0
+                ? rightElement.compareTo(leftElement)
+                : left.substring(leftElement.length(), left.length())
+                .compareTo(right.substring(leftElement.length(), right.length()));
     }
 }
+
