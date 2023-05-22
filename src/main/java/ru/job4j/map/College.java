@@ -4,8 +4,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-import static java.util.Optional.*;
-
 public class College {
     private final Map<Student, Set<Subject>> students;
 
@@ -14,11 +12,10 @@ public class College {
     }
 
     public Optional<Student> findByAccount(String account) {
-        return ofNullable(students.keySet()
+        return students.keySet()
                 .stream()
                 .filter(student -> student.account().equals(account))
-                .findFirst()
-                .orElse(null));
+                .findFirst();
     }
 
     public Optional<Subject> findBySubjectName(String account, String name) {
@@ -26,11 +23,10 @@ public class College {
         if (student.isEmpty()) {
             return Optional.empty();
         }
-        return ofNullable(students.get(student.get())
+        return students.get(student.get())
                 .stream()
                 .filter(subject -> subject.name().equals(name))
-                .findFirst()
-                .orElse(null));
+                .findFirst();
     }
 
     public static void main(String[] args) {
