@@ -83,7 +83,6 @@ public class SqlTracker implements Store {
 
     @Override
     public List<Item> findAll() {
-        //return List.copyOf(items);
         List<Item> items = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(
                 "SELECT * FROM items")) {
