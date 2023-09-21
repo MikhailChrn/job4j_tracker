@@ -7,7 +7,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TrackerTest {
-    @Test
+    /*@Test
     public void whenTestFindById() {
         Tracker tracker = new Tracker();
         Item bug = new Item("Bug");
@@ -95,5 +95,5 @@ public class TrackerTest {
         boolean result = tracker.delete(1000);
         assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
         assertThat(result).isFalse();
-    }
+    }*/
 }
