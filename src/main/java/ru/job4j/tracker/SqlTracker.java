@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 public class SqlTracker implements Store {
 
@@ -30,6 +31,10 @@ public class SqlTracker implements Store {
         }
     }
 
+    private Item getItem(ResultSet set) {
+        return null;
+    }
+
     @Override
     public void close() throws SQLException {
         if (connection != null) {
@@ -50,7 +55,7 @@ public class SqlTracker implements Store {
                     item.setId(generatedKeys.getInt(1));
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return item;
@@ -64,7 +69,7 @@ public class SqlTracker implements Store {
             statement.setString(1, item.getName());
             statement.setInt(2, id);
             result = statement.executeUpdate() > 0;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return result;
@@ -76,7 +81,7 @@ public class SqlTracker implements Store {
                 "DELETE FROM items WHERE id = ?")) {
             statement.setInt(1, id);
             statement.executeUpdate();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -95,7 +100,7 @@ public class SqlTracker implements Store {
                     ));
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return items;
@@ -116,7 +121,7 @@ public class SqlTracker implements Store {
                     ));
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return items;
@@ -129,14 +134,15 @@ public class SqlTracker implements Store {
                 "SELECT * FROM items WHERE id = ?")) {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
-                resultSet.next();
-                item = new Item(
-                        resultSet.getInt("id"),
-                        resultSet.getString("name"),
-                        resultSet.getTimestamp("created").toLocalDateTime()
-                );
+                if (resultSet.next()) {
+                    item = new Item(
+                            resultSet.getInt("id"),
+                            resultSet.getString("name"),
+                            resultSet.getTimestamp("created").toLocalDateTime()
+                    );
+                }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return item;

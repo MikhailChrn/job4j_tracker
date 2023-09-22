@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -7,18 +8,20 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TrackerTest {
-    /*@Test
+    @Disabled
+    @Test
     public void whenTestFindById() {
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item bug = new Item("Bug");
         Item item = tracker.add(bug);
         Item result = tracker.findById(item.getId());
         assertThat(result.getName()).isEqualTo(item.getName());
     }
 
+    @Disabled
     @Test
     public void whenTestFindAll() {
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item first = new Item("First");
         Item second = new Item("Second");
         tracker.add(first);
@@ -27,9 +30,10 @@ public class TrackerTest {
         assertThat(result.getName()).isEqualTo(first.getName());
     }
 
+    @Disabled
     @Test
     public void whenTestFindByNameCheckArrayLength() {
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item first = new Item("First");
         Item second = new Item("Second");
         tracker.add(first);
@@ -41,9 +45,10 @@ public class TrackerTest {
         assertThat(result.size()).isEqualTo(3);
     }
 
+    @Disabled
     @Test
     public void whenTestFindByNameCheckSecondItemName() {
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item first = new Item("First");
         Item second = new Item("Second");
         tracker.add(first);
@@ -55,9 +60,10 @@ public class TrackerTest {
         assertThat(result.get(1).getName()).isEqualTo(second.getName());
     }
 
+    @Disabled
     @Test
     public void whenReplaceItemIsSuccessful() {
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item item = new Item("Bug");
         tracker.add(item);
         int id = item.getId();
@@ -66,9 +72,10 @@ public class TrackerTest {
         assertThat(tracker.findById(id).getName()).isEqualTo("Bug with description");
     }
 
+    @Disabled
     @Test
     public void whenReplaceItemIsNotSuccessful() {
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item item = new Item("Bug");
         tracker.add(item);
         Item updateItem = new Item("Bug with description");
@@ -77,9 +84,10 @@ public class TrackerTest {
         assertThat(result).isFalse();
     }
 
+    @Disabled
     @Test
     public void whenDeleteItemIsSuccessful() {
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item item = new Item("Bug");
         tracker.add(item);
         int id = item.getId();
@@ -87,13 +95,15 @@ public class TrackerTest {
         assertThat(tracker.findById(id)).isNull();
     }
 
+    @Disabled
     @Test
     public void whenDeleteItemIsNotSuccessful() {
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item item = new Item("Bug");
         tracker.add(item);
-        boolean result = tracker.delete(1000);
-        assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
-        assertThat(result).isFalse();
-    }*/
+        //boolean result =
+                tracker.delete(1000);
+        /*assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
+        assertThat(result).isFalse();*/
+    }
 }

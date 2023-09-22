@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,7 +9,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StartUITest {
-    /*@Test
+    @Disabled
+    @Test
     public void whenCreateItem() {
         Output out = new ConsoleOutput();
         Input in = new StubInput(
@@ -22,10 +24,11 @@ public class StartUITest {
         assertThat(tracker.findAll().get(0).getName()).isEqualTo("Item name");
     }
 
+    @Disabled
     @Test
     public void whenReplaceItem() {
         Output out = new ConsoleOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input in = new StubInput(
@@ -38,10 +41,11 @@ public class StartUITest {
         assertThat(tracker.findById(item.getId()).getName()).isEqualTo(replacedName);
     }
 
+    @Disabled
     @Test
     public void whenDeleteItem() {
         Output out = new ConsoleOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(
                 new String[]{"0", String.valueOf(item.getId()), "1"}
@@ -53,10 +57,11 @@ public class StartUITest {
         assertThat(tracker.findById(item.getId())).isNull();
     }
 
+    @Disabled
     @Test
     public void whenReplaceItemTestOutputIsSuccessfully() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input in = new StubInput(
@@ -80,10 +85,11 @@ public class StartUITest {
         );
     }
 
+    @Disabled
     @Test
     public void whenShowAllItems() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         Item two = tracker.add(new Item("test2"));
         Input in = new StubInput(
@@ -108,10 +114,11 @@ public class StartUITest {
         );
     }
 
+    @Disabled
     @Test
     public void whenFindItemsByNameTestSuccessfully() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         Item two = tracker.add(new Item("test2"));
         Item three = tracker.add(new Item("test3"));
@@ -136,10 +143,11 @@ public class StartUITest {
         );
     }
 
+    @Disabled
     @Test
     public void whenFindItemsByIdTestSuccessfully() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         Item two = tracker.add(new Item("test2"));
         Item three = tracker.add(new Item("test3"));
@@ -170,7 +178,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new ExitProgram(out));
         new StartUI(out).init(in, tracker, actions);
@@ -181,13 +189,14 @@ public class StartUITest {
         );
     }
 
+    @Disabled
     @Test
     public void whenInvalidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
                 new String[] {"1", "0"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new MemTracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new ExitProgram(out));
         new StartUI(out).init(in, tracker, actions);
@@ -200,5 +209,5 @@ public class StartUITest {
                         + "0. Exit Program" + ln
                         + "Bye!" + ln
         );
-    }*/
+    }
 }
