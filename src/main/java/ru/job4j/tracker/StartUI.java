@@ -39,7 +39,6 @@ public class StartUI {
                                     new EditItem(output),
                                     new DeleteItem(output),
                                     new FindItemById(output),
-                                    new FindItemsByName(output),
                                     new ExitProgram(output)};
         List<UserAction> actions = Arrays.asList(actionsArray);
         new StartUI(output).init(input, sqlTracker, actions);

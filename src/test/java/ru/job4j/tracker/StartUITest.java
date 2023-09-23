@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,14 +8,13 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StartUITest {
-    @Disabled
     @Test
     public void whenCreateItem() {
         Output out = new ConsoleOutput();
         Input in = new StubInput(
                 new String[]{"0", "Item name", "1"}
         );
-        Store tracker = new SqlTracker();
+        Store tracker = new MemTracker();
         List<UserAction> actions = new ArrayList<>();
         actions.add(new CreateItem(out));
         actions.add(new ExitProgram(out));
@@ -24,7 +22,6 @@ public class StartUITest {
         assertThat(tracker.findAll().get(0).getName()).isEqualTo("Item name");
     }
 
-    @Disabled
     @Test
     public void whenReplaceItem() {
         Output out = new ConsoleOutput();
@@ -41,7 +38,6 @@ public class StartUITest {
         assertThat(tracker.findById(item.getId()).getName()).isEqualTo(replacedName);
     }
 
-    @Disabled
     @Test
     public void whenDeleteItem() {
         Output out = new ConsoleOutput();
@@ -57,7 +53,6 @@ public class StartUITest {
         assertThat(tracker.findById(item.getId())).isNull();
     }
 
-    @Disabled
     @Test
     public void whenReplaceItemTestOutputIsSuccessfully() {
         Output out = new StubOutput();
@@ -85,7 +80,6 @@ public class StartUITest {
         );
     }
 
-    @Disabled
     @Test
     public void whenShowAllItems() {
         Output out = new StubOutput();
@@ -114,7 +108,6 @@ public class StartUITest {
         );
     }
 
-    @Disabled
     @Test
     public void whenFindItemsByNameTestSuccessfully() {
         Output out = new StubOutput();
@@ -143,7 +136,6 @@ public class StartUITest {
         );
     }
 
-    @Disabled
     @Test
     public void whenFindItemsByIdTestSuccessfully() {
         Output out = new StubOutput();
@@ -189,7 +181,6 @@ public class StartUITest {
         );
     }
 
-    @Disabled
     @Test
     public void whenInvalidExit() {
         Output out = new StubOutput();

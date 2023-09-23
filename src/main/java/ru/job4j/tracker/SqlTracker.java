@@ -31,8 +31,10 @@ public class SqlTracker implements Store {
         }
     }
 
-    private Item getItem(ResultSet set) {
-        return null;
+    private Item getItem(ResultSet set) throws SQLException {
+        return new Item(set.getInt("id"),
+                set.getString("name"),
+                set.getTimestamp("created").toLocalDateTime());
     }
 
     @Override
@@ -93,11 +95,7 @@ public class SqlTracker implements Store {
                 "SELECT * FROM items")) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    items.add(new Item(
-                            resultSet.getInt("id"),
-                            resultSet.getString("name"),
-                            resultSet.getTimestamp("created").toLocalDateTime()
-                    ));
+                    items.add(getItem(resultSet));
                 }
             }
         } catch (SQLException e) {
@@ -114,11 +112,7 @@ public class SqlTracker implements Store {
             statement.setString(1, key);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    items.add(new Item(
-                            resultSet.getInt("id"),
-                            resultSet.getString("name"),
-                            resultSet.getTimestamp("created").toLocalDateTime()
-                    ));
+                    items.add(getItem(resultSet));
                 }
             }
         } catch (SQLException e) {
@@ -135,11 +129,7 @@ public class SqlTracker implements Store {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    item = new Item(
-                            resultSet.getInt("id"),
-                            resultSet.getString("name"),
-                            resultSet.getTimestamp("created").toLocalDateTime()
-                    );
+                    item = getItem(resultSet);
                 }
             }
         } catch (SQLException e) {

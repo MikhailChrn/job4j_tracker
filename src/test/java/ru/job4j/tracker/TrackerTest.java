@@ -8,7 +8,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TrackerTest {
-    @Disabled
     @Test
     public void whenTestFindById() {
         Store tracker = new MemTracker();
@@ -18,7 +17,6 @@ public class TrackerTest {
         assertThat(result.getName()).isEqualTo(item.getName());
     }
 
-    @Disabled
     @Test
     public void whenTestFindAll() {
         Store tracker = new MemTracker();
@@ -30,7 +28,6 @@ public class TrackerTest {
         assertThat(result.getName()).isEqualTo(first.getName());
     }
 
-    @Disabled
     @Test
     public void whenTestFindByNameCheckArrayLength() {
         Store tracker = new MemTracker();
@@ -45,7 +42,6 @@ public class TrackerTest {
         assertThat(result.size()).isEqualTo(3);
     }
 
-    @Disabled
     @Test
     public void whenTestFindByNameCheckSecondItemName() {
         Store tracker = new MemTracker();
@@ -60,7 +56,6 @@ public class TrackerTest {
         assertThat(result.get(1).getName()).isEqualTo(second.getName());
     }
 
-    @Disabled
     @Test
     public void whenReplaceItemIsSuccessful() {
         Store tracker = new MemTracker();
@@ -72,7 +67,6 @@ public class TrackerTest {
         assertThat(tracker.findById(id).getName()).isEqualTo("Bug with description");
     }
 
-    @Disabled
     @Test
     public void whenReplaceItemIsNotSuccessful() {
         Store tracker = new MemTracker();
@@ -84,7 +78,6 @@ public class TrackerTest {
         assertThat(result).isFalse();
     }
 
-    @Disabled
     @Test
     public void whenDeleteItemIsSuccessful() {
         Store tracker = new MemTracker();
@@ -95,16 +88,12 @@ public class TrackerTest {
         assertThat(tracker.findById(id)).isNull();
     }
 
-    /**
-     * @Disabled
-     *     @Test
-     *     public void whenDeleteItemIsNotSuccessful() {
-     *         Store tracker = new MemTracker();
-     *         Item item = new Item("Bug");
-     *         tracker.add(item);
-     *         boolean result = tracker.delete(1000);
-     *         assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
-     *         assertThat(result).isFalse();
-     *     }
-     */
+    @Test
+    public void whenDeleteItemWasSuccessful() {
+        Store tracker = new MemTracker();
+        Item item = new Item("Bug");
+        tracker.add(item);
+        assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
+        tracker.delete(item.getId());
+    }
 }
