@@ -175,4 +175,16 @@ public class SqlTrackerTest {
         assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
         tracker.delete(item.getId());
     }
+
+    @Test
+    public void whenThereAreAnyRecordsDeleteOneItem() {
+        Store tracker = new SqlTracker(connection);
+        tracker.add(new Item("First"));
+        Item second = new Item("Second");
+        tracker.add(second);
+        tracker.add(new Item("Third"));
+        tracker.add(new Item("Fourth"));
+        tracker.delete(second.getId());
+        assertThat(tracker.findAll().size()).isEqualTo(3);
+    }
 }
