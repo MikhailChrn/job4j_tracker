@@ -174,6 +174,9 @@ public class SqlTrackerTest {
         tracker.add(item);
         assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
         tracker.delete(item.getId());
+        boolean result = tracker.findById(item.getId()) != null ? true : false;
+        assertThat(result).isFalse();
+
     }
 
     @Test
