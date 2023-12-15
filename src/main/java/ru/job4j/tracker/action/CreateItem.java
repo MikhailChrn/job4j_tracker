@@ -1,4 +1,6 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.action;
+
+import ru.job4j.tracker.*;
 
 public class CreateItem implements UserAction {
     private final Output out;
