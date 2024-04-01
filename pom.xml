@@ -16,6 +16,7 @@
     </properties>
 
     <profiles>
+
         <profile>
             <id>test</id>
             <properties>
@@ -25,12 +26,15 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
+
         <profile>
             <id>production</id>
             <properties>
                 <liquibase.config>src/main/resources/db/liquibase.properties</liquibase.config>
             </properties>
+
         </profile>
+
     </profiles>
 
     <dependencies>
