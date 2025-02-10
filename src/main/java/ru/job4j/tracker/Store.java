@@ -1,7 +1,5 @@
 package ru.job4j.tracker;
 
-import ru.job4j.tracker.Item;
-
 import java.util.List;
 
 public interface Store extends AutoCloseable {
