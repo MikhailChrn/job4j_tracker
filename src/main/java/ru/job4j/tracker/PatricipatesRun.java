@@ -30,13 +30,13 @@ public class PatricipatesRun {
             create(user, sf);
             var item = new Item();
             item.setName("Learn Hibernate");
-            item.setParticipates(List.of(user));
+            item.setUsers(List.of(user));
             create(item, sf);
             sf.openSession()
                     .createQuery("from Item where id = :fId", Item.class)
                     .setParameter("fId", item.getId())
                     .getSingleResult()
-                    .getParticipates()
+                    .getUsers()
                     .forEach(System.out::println);
         }  catch (Exception e) {
             e.printStackTrace();

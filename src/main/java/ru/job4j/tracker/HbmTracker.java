@@ -58,7 +58,9 @@ public class HbmTracker implements Store, AutoCloseable {
         Session session = sessionFactory.openSession();
         try {
             session.beginTransaction();
-            session.delete(findById(id));
+            session.createQuery("DELETE Item i WHERE i.id = :fId")
+                    .setParameter("fId", id)
+                    .executeUpdate();
             session.getTransaction().commit();
 
         } catch (Exception ex) {
@@ -75,7 +77,7 @@ public class HbmTracker implements Store, AutoCloseable {
         List<Item> result = null;
         try {
             session.beginTransaction();
-            result = session.createQuery("FROM Item")
+            result = session.createQuery("FROM Item i")
                     .getResultList();
             session.getTransaction().commit();
 

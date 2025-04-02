@@ -35,11 +35,11 @@ public class Item {
         this.created = created;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "participates",
             joinColumns = { @JoinColumn(name = "item_id") },
             inverseJoinColumns = { @JoinColumn(name = "user_id") }
     )
-    private List<User> participates = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 }
